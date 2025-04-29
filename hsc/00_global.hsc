@@ -87,6 +87,67 @@
     (unit (list_get (ai_actors my_ai) index))
 )
 
+(script static unit player0
+    (unit (list_get (players) 0))
+)
+
+(script static unit player1
+    (unit (list_get (players) 1))
+)
+
+(script static short player_count
+    (list_count (players))
+)
+
+(script static boolean cinematic_skip_start
+    (cinematic_skip_start_internal)
+    (game_save_totally_unsafe)
+    (sleep_until (not (game_saving)) 1)
+    (not (game_reverted))
+)
+
+(script static void cinematic_skip_stop (cinematic_skip_stop_internal))
+
+(script static void script_dialog_start
+    (sleep_until (not global_dialog_on))
+    (set global_dialog_on 1)
+    (ai_dialogue_triggers 0)
+)
+
+(script static void script_dialog_stop
+    (ai_dialogue_triggers 1)
+    (sleep 30)
+    (set global_dialog_on 0)
+)
+
+(script static void player_effect_impact
+    (player_effect_set_max_translation 0.050000 0.050000 0.075000)
+    (player_effect_set_max_rotation 0.000000 0.000000 0.000000)
+    (player_effect_set_max_vibrate 0.400000 1.000000)
+    (player_effect_start (real_random_range 0.700000 0.900000) 0.100000)
+)
+
+(script static void player_effect_explosion
+    (player_effect_set_max_translation 0.010000 0.010000 0.025000)
+    (player_effect_set_max_rotation 0.500000 0.500000 1.000000)
+    (player_effect_set_max_vibrate 0.500000 0.400000)
+    (player_effect_start (real_random_range 0.700000 0.900000) 0.100000)
+)
+
+(script static void player_effect_rumble
+    (player_effect_set_max_translation 0.010000 0.000000 0.020000)
+    (player_effect_set_max_rotation 0.100000 0.100000 0.200000)
+    (player_effect_set_max_vibrate 0.500000 0.300000)
+    (player_effect_start (real_random_range 0.700000 0.900000) 0.500000)
+)
+
+(script static void player_effect_vibration
+    (player_effect_set_max_translation 0.007500 0.007500 0.012500)
+    (player_effect_set_max_rotation 0.010000 0.010000 0.050000)
+    (player_effect_set_max_vibrate 0.200000 0.500000)
+    (player_effect_start (real_random_range 0.700000 0.900000) 1.000000)
+)
+
 ;; ---
 ;; Complete garbage
 

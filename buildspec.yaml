@@ -2,7 +2,7 @@ version: 1
 tag_space: 64M
 extend_limits: true
 scenarios:
-  - cmt/scenarios/singleplayer/b30_revamp/b30_evolved_dev
+  - cmt/scenarios/singleplayer/b30_revamp/tsce_coop_dev
   - cmt/scenarios/singleplayer/b30_revamp/b30_evolved_clean_dev
 commands:
   release:
